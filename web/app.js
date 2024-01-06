@@ -1,5 +1,6 @@
 const { invoke } = window.__TAURI__.tauri
 const { open } = window.__TAURI__.dialog
+const { getVersion } = window.__TAURI__.app
 
 let mods = document.getElementById("modlist")
 
@@ -211,6 +212,17 @@ function clearSettings() {
 document.getElementById("clearsettings").addEventListener("click", clearSettings)
 
 loadSettings()
+
+function updateTitle() {
+	getVersion().then((version) => {
+		let title = "Branov Mod Manager " + version
+		document.getElementById("version").textContent = title
+	}).catch((e) => {
+		console.log(e)
+		notification(e)
+	})
+}
+updateTitle()
 
 document.getElementById("fireinthehole").addEventListener("click", () => {
 	let audio = new Audio("fire-in-the-hole-geometry-dash.mp3")

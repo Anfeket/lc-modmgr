@@ -37,6 +37,9 @@ button { /* fuck edge */
 	margin-left: 5%;
 	font-size: 4vw;
 }
+#version {
+	text-decoration: underline;
+}
 #extra {
 	position: absolute;
 	display: flex;
