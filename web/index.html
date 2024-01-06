@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="styles.css">
+	<script type="module" src="app.js"></script>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div id="title">
+		<img id="icon" src="icon.png">
+		<p><u>Branov mod manager</u></p>
+		<div id="extra">
+			<img id="settings" src="setting.svg">
+			<img id="refresh" src="refresh.svg">
+		</div>
+	</div>
+	<div id="content">
+		<div id="setuplist">
+		</div>
+		<div id="setupinfo">
+			<p id="setuptitle">No Setup Selected</p>
+			<div id="modmenu">
+				<div id="modlist"></div>
+				<div id="modbtns">
+					<button id="loadsetup">Load Setup</button>
+					<button id="removesetup">Remove Setup</button>
+					<button id="newsetup">New Setup</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="settingswindow" hidden=true>
+		<img id="closesettings" src="close.svg">
+		<p id="settingstitle">Settings</p>
+		<div id="settingsmenu">
+			<button id="savesettings">Save</button>
+			<button id="loadsettings">Load</button>
+		</div>
+		<label for="gamepath">Game Path:</label><br>
+		<div style="display: flex; align-items: center; gap: 5px;">
+			<input id="gamepath">
+			<button id="selectdir">Select directory</button>
+		</div><br>
+		<label for="notifdisable">Disable Notifications</label>
+		<input type="checkbox" name="notifdisable" id="notifdisable"><br>
+		<label for="windowscopy">Use Windows <code>Copy</code> (Don't disable)</label>
+		<input type="checkbox" name="windowscopy" id="windowscopy"><br>
+		<img id="fireinthehole" src="Normal.webp">
+	</div>
+	<div id="notifications"></div>
+
+</html>

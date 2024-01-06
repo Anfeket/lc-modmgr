@@ -1,0 +1,275 @@
+:root {
+	--dark: #7122dd;
+	--light: #8e4ee4;
+	--focus: #8038E1;
+	--selected: #dbdbdb;
+	--selectedhover: #b0b0b0;
+	--loaded: #50BA5B;
+}
+body {
+	font-family: "Noto Sans";
+	overflow: hidden;
+	background: var(--dark);
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+button { /* fuck edge */
+	font-family: inherit;
+}
+
+#title {
+	margin: 20px;
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	background: var(--light);
+	border-radius: 10px;
+	overflow: hidden;
+}
+#icon {
+	width: 10%;
+}
+#title p {
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 5%;
+	font-size: 4vw;
+}
+#extra {
+	position: absolute;
+	display: flex;
+	flex-direction: row-reverse;
+	gap: 5px;
+	align-content: center;
+	right: 20px;
+	top: 20px;
+}
+#extra img {
+	width: 6%;
+}
+#extra img:hover {
+	cursor: pointer;
+}
+
+#content {
+	display: flex;
+	flex: 1;
+	justify-content: space-between;
+	height: 0;
+}
+
+#setuplist {
+	border-radius: 10px;
+	overflow-y: auto;
+	width: 45%;
+	margin: 20px;
+	border: 5px solid black;
+	background: var(--light);
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+	gap: 10px;
+}
+.setupbtn {
+	font-size: 3vh;
+	background: var(--dark);
+	border: 2px solid black;
+	padding: 5px;
+	transition: 0.2s;
+	border-radius: 5px;
+}
+.setupbtn:hover {
+	background: var(--focus);
+	transition: 0.2s;
+	cursor: pointer;
+}
+.selected {
+	background: var(--selected);
+}
+.selected:hover {
+	background: var(--selectedhover);
+	cursor: pointer;
+}
+.loaded {
+	background: var(--loaded);
+}
+
+#setupinfo {
+	border-radius: 10px;
+	width: 45%;
+	margin: 20px;
+	border: 5px solid black;
+	background: var(--light);
+	padding: 20px;
+}
+#setuptitle {
+	font-size: 4vh;
+	padding: 10px;
+	margin-top: 0;
+	margin-bottom: 10px;
+	background: var(--dark);
+	border-radius: 10px;
+}
+
+#modmenu {
+	display: flex;
+	flex-direction: row;
+}
+#modlist {
+	font-size: 2vh;
+	border-radius: 10px;
+	width: 50%;
+	overflow-y: auto;
+	border: 3px solid black;
+	background: var(--dark);
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	gap: 5px;
+}
+#modbtns {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	margin-left: 10px;
+	gap: 10px;
+	align-items: center;
+	align-content: stretch;
+}
+#modbtns button {
+	font-size: 2vh;
+	width: 100%;
+	background: var(--dark);
+	border: 2px solid black;
+	padding: 5px;
+	transition: 0.2s;
+	border-radius: 5px;
+}
+#modbtns button:hover {
+	background: var(--focus);
+	transition: 0.2s;
+	cursor: pointer;
+}
+.mods {
+	margin: 0;
+	font-size: 2vh;
+}
+.hidden {
+	display: none;
+}
+
+#notifications {
+	position: absolute;
+	right: 5%;
+	top: 5%;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	gap: 10px;
+}
+#notifications p {
+	background: var(--dark);
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 0;
+	cursor: pointer;
+	user-select: none;
+}
+.notifshow {
+	animation: showNotif 0.5s linear 1 forwards;
+}
+.notifhide {
+	animation: hideNotif 0.5s linear 1 forwards;
+}
+@keyframes showNotif {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes hideNotif {
+	0% {
+		opacity: 1;
+		pointer-events: none;
+	}
+	100% {
+		opacity: 0;
+		margin-right: 2vw;
+	}
+}
+
+#settingswindow {
+	position: absolute;
+	box-sizing: border-box;
+	padding: 3%;
+	left: 25%;
+	top: 10%;
+	width: 50%;
+	background: var(--light);
+	height: 80%;
+	border: 5px solid black;
+	border-radius: 20px;
+}
+#settingstitle {
+	font-size: 3vh;
+	font-weight: bold;
+	margin: 0;
+}
+#closesettings {
+	width: 5%;
+	position: absolute;
+	right: 3%;
+	top: 3%;
+	cursor: pointer;
+}
+#settingsmenu button{
+	background: var(--dark);
+	border: 1px solid black;
+	border-radius: 5px;
+	transition: 0.2s;
+}
+#settingsmenu button:hover {
+	background: var(--focus);
+	cursor: pointer;
+}
+#settingsmenu {
+	margin-bottom: 10px;
+}
+#gamepath {
+	font-size: 2vh;
+	font-family: inherit;
+	height: 100%;
+	width: 100%;
+	background: var(--dark);
+	border: 1px solid black;
+	margin: 0;
+	padding: 4px;
+}
+#selectdir {
+	background: var(--dark);
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 1%;
+	height: 90%;
+	transition: 0.2s;
+}
+#selectdir:hover {
+	cursor: pointer;
+	background: var(--focus);
+}
+#settingswindow code {
+	background: var(--dark);
+	font-size: inherit;
+}
+
+#fireinthehole {
+	margin-top: 20px;
+	height: 10vw;
+	width: 20vw;
+	cursor: pointer;
+}
