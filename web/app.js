@@ -181,11 +181,14 @@ function saveSettings() {
 	localStorage.setItem("notificationsDisabled", notificationsDisabled)
 }
 document.getElementById("savesettings").addEventListener("click", saveSettings)
+
 function loadSettings() {
 	if (localStorage.length == 0) {
 		selectGameDir()
 		localStorage.setItem("windowsCopy", true)
 		localStorage.setItem("notificationsDisabled", false)
+		document.getElementById("windowscopy").checked = true
+		document.getElementById("notifdisable").checked = false
 		notification("First start! Thank you for using my program")
 	} else {
 		notification("Settings loaded")
@@ -193,17 +196,20 @@ function loadSettings() {
 		let windowsCopy = localStorage.getItem("windowsCopy")
 		let notificationsDisabled = localStorage.getItem("notificationsDisabled")
 		document.getElementById("gamepath").value = gamePath
-		let windowsCopyElement = document.getElementById("windowscopy")
-		windowsCopyElement.checked = windowsCopy
-		windowsCopyElement.dispatchEvent(new Event("change"))
-		let notificationsDisabledElement = document.getElementById("notifdisable")
-		notificationsDisabledElement.checked = notificationsDisabled
-		notificationsDisabledElement.dispatchEvent(new Event("change"))
+		document.getElementById("windowscopy").checked = JSON.parse(windowsCopy)
+		document.getElementById("notifdisable").checked = JSON.parse(notificationsDisabled)
 		invoke("set_config", { config: { path: gamePath, windows_copy: windowsCopy } }).catch((e) => { notification(e) })
 		updateSetups()
 	}
 }
 document.getElementById("loadsettings").addEventListener("click", loadSettings)
+
+function clearSettings() {
+	localStorage.clear()
+	close()
+}
+document.getElementById("clearsettings").addEventListener("click", clearSettings)
+
 loadSettings()
 
 document.getElementById("fireinthehole").addEventListener("click", () => {

@@ -1,8 +1,8 @@
 [package]
 name = "app"
-version = "1.0.0"
+version = "1.0.1"
 description = "Mod Manager for Lethal Company"
-authors = ["you"]
+authors = ["Anfeket"]
 license = ""
 repository = ""
 default-run = "app"
