@@ -249,10 +249,15 @@ impl SetupManager {
     fn load_setup(&self, setup: &Setup) -> Result<(), String> {
         let plugins_dir = self.plugin_dir()?;
         let setup_path = self.get_setup_path(setup)?;
-        let plugins_old = plugins_dir.clone() + ".old\\";
+        let plugins_old = plugins_dir.clone() + ".old";
         if self.windows_copy {
             Command::new("cmd")
-                .args(["/C", "robocopy", "/E", &plugins_dir, &plugins_old])
+                .args(["/C", "rmdir", "/S", "/Q", &plugins_old])
+                .output()
+                .map_err(|err| "Failed to remove Backup! ".to_string() + &err.to_string())
+                .map(|_| ())?;
+            Command::new("cmd")
+                .args(["/C", "robocopy", "/E", "/MOVE",  &plugins_dir, &plugins_old])
                 .output()
                 .map_err(|err| "Backup failed! ".to_string() + &err.to_string())
                 .map(|_| ())?;
