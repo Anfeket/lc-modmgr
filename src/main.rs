@@ -256,13 +256,13 @@ impl SetupManager {
                 .output()
                 .map_err(|err| "Failed to remove Backup! ".to_string() + &err.to_string())
                 .map(|_| ())?;
-            Command::new("cmd")
-                .args(["/C", "robocopy", "/E", "/MOVE",  &plugins_dir, &plugins_old])
+            Command::new("robocopy")
+                .args(["/MIR", "/MOVE",  &plugins_dir, &plugins_old])
                 .output()
                 .map_err(|err| "Backup failed! ".to_string() + &err.to_string())
                 .map(|_| ())?;
-            Command::new("cmd")
-                .args(["/C", "robocopy", "/E", &setup_path, &plugins_dir])
+            Command::new("robocopy")
+                .args(["/MIR", &setup_path, &plugins_dir])
                 .output()
                 .map_err(|err| "Loading failed! ".to_string() + &err.to_string())
                 .map(|_| ())?;
